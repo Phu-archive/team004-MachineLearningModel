@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from functionalities import getResponse
+from functionalities import getResponse, loadTextGetVector
 
 app = Flask(__name__)
 
@@ -36,6 +36,31 @@ def getBotResponse():
     response["status"] = "success"
     response["message"] = "successfully added the response"
     response["response_text"] = outText
+    return jsonify(response), 200
+
+
+@app.route('/vector', methods=["POST"])
+def getVector():
+    data = request.get_json()
+    response = {
+        "status": "success",
+        "message": "Invalid Payload"
+    }
+
+    if not data:
+        return jsonify(response), 400
+
+    text = data.get('text')
+
+    if not text:
+        response["message"] = "Text not Found"
+        return jsonify(response), 400
+
+    outVec = loadTextGetVector(text.lower())
+
+    response["status"] = "success"
+    response["message"] = "successfully get the vector of the value"
+    response["response_vector"] = outVec
     return jsonify(response), 200
 
 @app.route('/')

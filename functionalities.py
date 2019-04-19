@@ -159,3 +159,19 @@ def getResponse(text, temp = 0.05):
             break
 
     return ' '.join(list_text[1:-1])
+
+def loadTextGetVector(text):
+    with open("save_word2vec/types.txt", "r") as f:
+        for i, l in enumerate(f.readlines()):
+            if text == l:
+                break
+
+    with open("save_word2vec/vectors.txt", "r") as f:
+        for current_i, l in enumerate(f.readlines()):
+            if i == current_i:
+                vector = [float(e) for e in l[:-1].split(' ')]
+                break
+
+    return vector
+
+# print(loadTextGetVector("fever"))

@@ -119,3 +119,6 @@ dataset/README.txt
 dataset/chameleons.pdf
 
 test/__MACOSX
+
+save_word2vec/types.txt
+save_word2vec/vectors.txt

@@ -107,7 +107,7 @@ summary/
 
 save_transformer/transformer*
 save_transformer/checkpoint
-
+save_transformer/tokenizer.pickle
 
 dataset/formatted_movie_lines.txt
 dataset/movie_characters_metadata.txt

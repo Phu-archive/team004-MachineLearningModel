@@ -1,1 +1,0 @@
-# Getting the Checkpoint Files

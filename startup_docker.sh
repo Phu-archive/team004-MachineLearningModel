@@ -1,2 +1,2 @@
 docker build -t flask-deeplearning:latest .
-docker run -d -p 5000:5000 flask-deeplearning
+docker run -d -p 80:8000 flask-deeplearning

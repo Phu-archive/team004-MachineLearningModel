@@ -1,9 +1,9 @@
 from flask import Flask, jsonify, request
 from functionalities import getResponse, loadTextGetVector
 
-app = Flask(__name__)
+application = Flask(__name__)
 
-@app.route('/response', methods=["POST"])
+@application.route('/response', methods=["POST"])
 def getBotResponse():
     data = request.get_json()
     response = {
@@ -39,7 +39,7 @@ def getBotResponse():
     return jsonify(response), 200
 
 
-@app.route('/vector', methods=["POST"])
+@application.route('/vector', methods=["POST"])
 def getVector():
     data = request.get_json()
     response = {
@@ -63,7 +63,7 @@ def getVector():
     response["response_vector"] = outVec
     return jsonify(response), 200
 
-@app.route('/')
+@application.route('/')
 def main():
     response = {
         "status": "success",
@@ -73,4 +73,4 @@ def main():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=80)
+    application.run(debug=True, host='0.0.0.0', port=80)

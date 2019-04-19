@@ -102,3 +102,18 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+.DS_Store
+summary/
+
+save_transformer/transformer*
+save_transformer/checkpoint
+
+
+dataset/formatted_movie_lines.txt
+dataset/movie_characters_metadata.txt
+dataset/movie_conversations.txt
+dataset/movie_lines.txt
+dataset/movie_titles_metadata.txt
+dataset/raw_script_urls.txt
+dataset/README.txt
+dataset/chameleons.pdf

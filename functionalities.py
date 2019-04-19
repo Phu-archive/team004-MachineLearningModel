@@ -175,5 +175,3 @@ def loadTextGetVector(text):
                 break
 
     return vector
-
-print(loadTextGetVector("dualism"))

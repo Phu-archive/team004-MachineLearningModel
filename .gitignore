@@ -117,3 +117,5 @@ dataset/movie_titles_metadata.txt
 dataset/raw_script_urls.txt
 dataset/README.txt
 dataset/chameleons.pdf
+
+test/__MACOSX

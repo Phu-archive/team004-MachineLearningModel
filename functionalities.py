@@ -5,10 +5,6 @@ from models import positionalEncoding, mask_create, attention, pointwiseFeedForw
 from models import mask_create
 import functools
 
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.utils import shuffle
-
 import re
 import numpy as np
 import os
@@ -17,8 +13,6 @@ import json
 from glob import glob
 import pickle
 
-import tqdm
-import math
 import codecs
 from io import open
 import csv
@@ -89,7 +83,7 @@ def save_tokenizer():
         reader = csv.reader(csvfile, delimiter=delimiter, lineterminator='\n')
         for i, row in enumerate(reader):
             if i % 20000 == 0:
-                print(f"At {i}")
+                print("At ", i)
 
             start = "<start> " + row[0] + " <end>"
             end = "<start> " + row[1] + " <end>"
@@ -116,7 +110,7 @@ def getResponse(text, temp = 0.05):
     test_tok.append(tokenizer.word_index["<start>"])
 
     for t in text.split(' '):
-        test_tok.append(tokenizer.word_index.get(t, '<unk>'))
+        test_tok.append(tokenizer.word_index.get(t, 1))
 
     test_tok.append(tokenizer.word_index["<end>"])
 

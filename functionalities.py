@@ -20,6 +20,7 @@ import csv
 from utils import extractSentencePairs, loadConversations, loadLines
 
 import pickle
+import linecache
 
 top_k = 7500
 num_layers = 4
@@ -163,7 +164,8 @@ def getResponse(text, temp = 0.05):
 def loadTextGetVector(text):
     with open("save_word2vec/types.txt", "r") as f:
         for i, l in enumerate(f.readlines()):
-            if text == l:
+            if text == l[:-1]:
+                print("Found!!!!")
                 break
 
     with open("save_word2vec/vectors.txt", "r") as f:
@@ -174,4 +176,4 @@ def loadTextGetVector(text):
 
     return vector
 
-# print(loadTextGetVector("fever"))
+print(loadTextGetVector("dualism"))

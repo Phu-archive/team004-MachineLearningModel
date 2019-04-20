@@ -11,3 +11,18 @@ To startup the server/docker container execute
 ```
 sh startup_docker.sh
 ```
+
+
+## Running Transformer
+
+```
+python3 training_transformer.py --vocabulary-size 7500 \
+  --max-sen-length 20 \
+  --num-layer 4 \
+  --model-dim 128 \
+  --pointwise-dim 512 \
+  --num-head 8 \
+  --dropout-rate 0.1 \
+  --batch-size 64 \
+  --warmup-length 400 \
+```

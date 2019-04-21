@@ -104,6 +104,7 @@ venv.bak/
 .mypy_cache/
 .DS_Store
 summary/
+save/
 
 save_transformer/transformer*
 save_transformer/checkpoint

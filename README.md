@@ -12,6 +12,8 @@ To startup the server/docker container execute
 sh startup_docker.sh
 ```
 
+And the everything is ready !!!
+
 
 ## Running Transformer
 

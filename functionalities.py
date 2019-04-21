@@ -106,12 +106,12 @@ def save_tokenizer():
     with open('tokenizer.pickle', 'wb') as handle:
         pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-def getResponse(text, temp = 0.05):
+def getResponse(text, temp=0.5):
     test_tok = []
     test_tok.append(tokenizer.word_index["<start>"])
 
     for t in text.split(' '):
-        test_tok.append(tokenizer.word_index.get(t, 1))
+        test_tok.append(tokenizer.word_index.get(t, 1) if tokenizer.word_index.get(t, 1) < 7500 else 1)
 
     test_tok.append(tokenizer.word_index["<end>"])
 
@@ -161,17 +161,31 @@ def getResponse(text, temp = 0.05):
 
     return ' '.join(list_text[1:-1])
 
+def offsets_vector():
+    with open("save_word2vec/vectors.txt", "r") as f:
+        start_offset = 0
+        all_offsets = []
+        for current_i, l in enumerate(f.readlines()):
+            all_offsets.append(start_offset)
+            start_offset += len(l)
+
+    with open('offset.pickle', 'wb') as handle:
+        pickle.dump(all_offsets, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+
 def loadTextGetVector(text):
+    # Couldn't Search all need some optimization
     with open("save_word2vec/types.txt", "r") as f:
         for i, l in enumerate(f.readlines()):
             if text == l[:-1]:
                 print("Found!!!!")
                 break
 
+    with open('save_word2vec/offset.pickle', 'rb') as handle:
+        offset = pickle.load(handle)
+
     with open("save_word2vec/vectors.txt", "r") as f:
-        for current_i, l in enumerate(f.readlines()):
-            if i == current_i:
-                vector = [float(e) for e in l[:-1].split(' ')]
-                break
+        f.seek(offset[i])
+        vector = [float(e) for e in f.readline()[:-1].split(' ')]
 
     return vector

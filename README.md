@@ -12,7 +12,8 @@ To startup the server/docker container execute
 sh startup_docker.sh
 ```
 
-And the everything is ready !!!
+And the everything is ready !!! The code for transformer is based on https://tensorflow.org/alpha/tutorials/sequences/transformer
+However, I have modularized for future usage and down-grade the tensorflow to a version 1.12 (instead of 2.0 as in tutorials)
 
 
 ## Running Transformer
